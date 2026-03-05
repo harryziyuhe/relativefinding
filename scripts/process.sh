@@ -1,31 +1,30 @@
 #!/bin/bash
 set -euo pipefail
 
-INPUT_VCF="1kGP_high_coverage_Illumina.chr10.filtered.SNV_INDEL_SV_phased_panel.vcf.gz"
+INPUT_VCF="../data/1kGP_high_coverage_Illumina.chr10.filtered.SNV_INDEL_SV_phased_panel.vcf.gz"
 CHR="10"
-PANEL_TSV="igsr-1000 genomes 30x on grch38-samples.tsv"
+PANEL_TSV="../data/igsr.tsv"
 POPS=("LWK" "FIN" "CHS")
-OUT="chr${CHR}_biallelic_snps"
+OUT="../data/chr${CHR}_biallelic_snps"
 
 ###################################
 # PROCESS VCF                     #
-#    - subset to chromosome 10    #
 #    - keep SNPs only             #
 #    - keep biallelic sites only  #
 ###################################
 
-#echo "=== Processing VCF ==="
+echo "=== Processing VCF ==="
 
-#bcftools view \
-#    -v snps \
-#    -m2 -M2 \
-#    -Oz \
-#    -o "${OUT}.vcf.gz" \
-#    "${INPUT_VCF}"
+bcftools view \
+    -v snps \
+    -m2 -M2 \
+    -Oz \
+    -o "${OUT}.vcf.gz" \
+    "${INPUT_VCF}"
 
-#tabix -p vcf "${OUT}.vcf.gz"
+tabix -p vcf "${OUT}.vcf.gz"
 
-#echo "Created processed VCF: ${OUT}.vcf.gz"
+echo "Created processed VCF: ${OUT}.vcf.gz"
 
 ###################################
 # POPULATION SUBSETS              #
@@ -48,7 +47,7 @@ for POP in "${POPS[@]}"; do
     fi
     echo " Found ${N_SAMPLES} records."
     
-    POP_OUT="chr${CHR}_${POP}_biallelic_snps"
+    POP_OUT="../data/chr${CHR}_${POP}_biallelic_snps"
     
     bcftools view \
         -S "${SAMPLE_LIST}" \

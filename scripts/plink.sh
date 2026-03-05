@@ -7,7 +7,7 @@ MAF=0.01
 for POP in "${POPS[@]}"; do
     echo "=== Processing Population: ${POP} ==="
     
-    VCF="chr10_${POP}_biallelic_snps.vcf.gz"
+    VCF="../data/chr10_${POP}_biallelic_snps.vcf.gz"
     
     if [ ! -f "${VCF}" ]; then
         echo "  ERROR: VCF not found: ${VCF}"
@@ -19,13 +19,14 @@ for POP in "${POPS[@]}"; do
         --vcf "${VCF}" \
         --maf ${MAF} \
         --double-id \
+        --keep-allele-order \
         --make-bed \
-        --out "plink/chr10_${POP}"
+        --out "../plink/chr10_${POP}"
         
     plink \
-        --bfile "plink/chr10_${POP}" \
+        --bfile "../plink/chr10_${POP}" \
         --genome \
-        --out "plink/chr10_${POP}_plink"
+        --out "../plink/chr10_${POP}_plink"
     
     echo "  Done with ${POP}"
     echo "    PLINK relatedness: plink/chr10_${POP}_plink.genome"
