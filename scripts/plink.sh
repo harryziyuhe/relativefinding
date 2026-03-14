@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-POPS=("LWK" "FIN" "CHS")
-MAF=0.01
+POPS=("LWK" "FIN" "CHS" "YRI")
+MAF=0.05
 
 for POP in "${POPS[@]}"; do
     echo "=== Processing Population: ${POP} ==="
