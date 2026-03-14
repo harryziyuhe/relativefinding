@@ -35,7 +35,7 @@ echo "=== Creating Population Subset ==="
 for POP in "${POPS[@]}"; do
     echo ">>> Population: ${POP}"
     
-    SAMPLE_LIST="samples_${POP}.txt"
+    SAMPLE_LIST="../data/samples_${POP}.txt"
     
     awk -F'\t' -v pop="${POP}" 'NR>1 && $4==pop {print $1}' "${PANEL_TSV}" > "${SAMPLE_LIST}"
     
