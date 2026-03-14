@@ -63,5 +63,5 @@ For each `bits` and `min_m` pair, the GERMLINE script will generate a separate `
 
 To compare the two methods, the notebook ```plot_analysis.ipynb``` aggregates the total shared IBD segment length for each pair of individuals detected by GERMLINE. These values are then compared with the IBD proportion estimates from PLINK, allowing a direct visualization of how the two approaches measure genetic relatedness.
 
-Specifically, because the LWK and FIN populations do not include close relatives, they are best suited to examine how well PLINK and GERMLINE capture background relatedness. The CHS and YRI populations, on the other hand, are better suited to analyze how well both methods distinguish close relative pairs/trios from unrelated relationships.
+Specifically, because the LWK and FIN populations do not include close relatives, they are best suited to examine how well PLINK and GERMLINE capture background relatedness. The CHS and YRI populations, on the other hand, are better suited to analyze how well both methods distinguish close relative pairs/trios from unrelated relationships. See the ```Relative Finding.PDF``` for a sample notebook output.
 
